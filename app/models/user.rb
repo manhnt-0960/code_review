@@ -2,7 +2,7 @@ class User < ApplicationRecord
   before_save :name_beautifier
 
   enum role: %i[normal reviewer]
-  enum language: %i[ruby php java frontend android ios testing]
+  enum language: %i[ruby php java frontend android ios testing python]
 
   store_accessor :settings, :last_states, :last_rooms, :last_repositories, :last_languages
 
