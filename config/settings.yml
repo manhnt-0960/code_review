@@ -6,3 +6,4 @@ language:
   android: "Android" 
   ios: "IOS" 
   testing: "Testing"
+  python: "Python"
