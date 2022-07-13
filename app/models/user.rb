@@ -47,11 +47,11 @@ class User < ApplicationRecord
   end
 
   def to_cw
-    "[To:#{chatwork}] #{name}"
+    "<@#{slack_id}>"
   end
 
   def to_cc
-    "[CC]#{to_cw}"
+    # "[CC]#{to_cw}"
   end
 
   def to_picon

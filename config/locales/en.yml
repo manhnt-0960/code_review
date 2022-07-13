@@ -3,43 +3,43 @@ en:
     formats:
       default: "%H:%M %m/%d/%Y"
 
-  chatwork:
+  slack:
     messages:
       open: |-
-        %{chatwork}
+        <@%{slack_id}>
         Your pull request no. #%{number} has been opened (clap)
         %{url}
 
         %{message}
 
       ready: |-
-        %{chatwork}
+        <@%{slack_id}>
         Your pull request no. #%{number} is ready. Good luck to you!
         %{url}
 
         %{message}
 
       reviewing: |-
-        %{chatwork}
+        <@%{slack_id}>
         Your pull request no. #%{number} is under reviewing by %{reviewer}
         %{url}
 
       commented: |-
-        %{chatwork}
+        <@%{slack_id}>
         Your pull request no. #%{number} has been (commented)
         %{url}
 
         %{message}
 
       conflicted: |-
-        %{chatwork}
+        <@%{slack_id}>
         Your pull request no. #%{number} is conflicted :o
         %{url}
 
         %{message}
 
       merged: |-
-        %{chatwork}
+        <@%{slack_id}>
         Your pull request no. #%{number} has been (merged)
         --> Please update your redmine ticket!
         %{url}
@@ -47,7 +47,7 @@ en:
         %{message}
 
       closed: |-
-        %{chatwork}
+        <@%{slack_id}>
         Your pull request no. #%{number} has been closed (devil)
         %{url}
 

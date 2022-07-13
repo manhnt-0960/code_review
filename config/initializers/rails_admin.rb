@@ -32,7 +32,7 @@ RailsAdmin.config do |config|
       field :login
       field :email
       field :role
-      field :chatwork
+      field :slack_id
       field :merged
       field :room
       field :admin
@@ -45,7 +45,7 @@ RailsAdmin.config do |config|
       field :login
       field :email
       field :role
-      field :chatwork
+      field :slack_id
       field :room
       field :admin
     end
@@ -55,7 +55,7 @@ RailsAdmin.config do |config|
     edit do
       field :id
       field :name
-      field :bot_api_token
+      field :slack_id
       field :description
     end
   end

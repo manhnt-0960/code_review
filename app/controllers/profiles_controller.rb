@@ -23,6 +23,6 @@ class ProfilesController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit :room_id, :language
+    params.require(:user).permit :room_id, :language, :slack_id
   end
 end

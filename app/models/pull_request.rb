@@ -45,7 +45,7 @@ class PullRequest < ApplicationRecord
     where users: {language: language_param} if language_param.any?
   end)
 
-  delegate :name, :room_id, :chatwork, :to_cw, :to_cc, :html_url,
+  delegate :name, :room_id, :chatwork, :to_cw, :to_cc, :html_url, :slack_id,
     to: :user, prefix: true, allow_nil: true
 
   def html_path
@@ -75,15 +75,16 @@ class PullRequest < ApplicationRecord
   end
 
   def subscribe_repository
-    return unless user_chatwork
-    Subscription.create repository_id: repository_id,
-      user_id: user_id, subscriber: user_to_cc
+    return unless user_slack_id
+
+    Subscription.find_or_create_by repository_id: repository_id,
+      user_id: user_id
   end
 
   def send_message
     return if state_open? && message.blank?
     return if state_archived?
-    return unless user_chatwork && user_room_id
+    return unless user_slack_id && user_room_id
 
     params = {
       id: id,
@@ -91,14 +92,14 @@ class PullRequest < ApplicationRecord
       state: state,
       repository_id: repository_id,
       number: number,
-      reviewer: reviewer_picon,
       message: message,
       room_id: user_room_id,
       user_id: user_id,
-      user_cw: user_to_cw
+      slack_id: user_slack_id,
+      reviewer: current_reviewer,
     }
 
-    ChatworkWorker.perform_async params
+    SlackWorker.perform_async params
   end
 
   def increment_merged
