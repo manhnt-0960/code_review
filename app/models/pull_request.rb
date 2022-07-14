@@ -89,16 +89,16 @@ class PullRequest < ApplicationRecord
     room_slack_id = Room.find(user_room_id).slack_id
 
     params = {
-      id: test.id,
-      url: test.html_url,
-      state: test.state,
-      repository_id: test.repository_id,
-      number: test.number,
-      message: test.message,
-      room_id: test.user_room_id,
-      user_id: test.user_id,
-      slack_id: test.user_slack_id,
-      reviewer: test.current_reviewer,
+      id: id,
+      url: html_url,
+      state: state,
+      repository_id: repository_id,
+      number: number,
+      message: message,
+      room_id: user_room_id,
+      user_id: user_id,
+      slack_id: user_slack_id,
+      reviewer: current_reviewer,
       room_slack_id: room_slack_id
     }
 
