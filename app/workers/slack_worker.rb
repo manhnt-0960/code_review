@@ -11,7 +11,7 @@ class SlackWorker
     return unless params["room_slack_id"]
 
     Slack.configure.token = ENV["SLACK_API_TOKEN"]
-    client = Slack::Web::Client.new
+    @client = Slack::Web::Client.new
 
     post_slack_message params
   end
